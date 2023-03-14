@@ -1,14 +1,13 @@
-Pikmin 2 [![Build Status]][actions] ![Code Progress] ![Data Progress]
+Pikmin 2 Mod Template ![Code Progress] ![Data Progress]
 ========
 
-[Build Status]: https://github.com/projectPiki/pikmin2/actions/workflows/build.yml/badge.svg
-[actions]: https://github.com/projectPiki/pikmin2/actions/workflows/build.yml
+
 [Code Progress]: https://img.shields.io/endpoint?label=Code&url=https%3A%2F%2Fprogress.deco.mp%2Fdata%2Fpikmin2%2Fusa%2Fdol%2F%3Fmode%3Dshield%26measure%3Dcode
 [Data Progress]: https://img.shields.io/endpoint?label=Data&url=https%3A%2F%2Fprogress.deco.mp%2Fdata%2Fpikmin2%2Fusa%2Fdol%2F%3Fmode%3Dshield%26measure%3Ddata
 
-A decompilation of Pikmin 2.
+A decompilation of Pikmin 2, modified by turtleisaac to serve as a stepping off point for further mod creation
 
-This repository builds the following DOLs:
+This repository by default builds the following DOLs:
 
 ```
 90d328bf8f190c90472e8c19e7e53c6ad0fe0d1a  build/pikmin2.usa/main.dol
@@ -18,21 +17,40 @@ This repository builds the following DOLs:
 > **Note**  
 > The ROM this repository builds can be shifted. You are able to add
 > and remove code as you see fit, for modding or research purposes.
+>
+> To do this, you can add .cpp files to src/moddingU, and then modify
+> the contents of src/moddingU/Makefile accordingly to ensure they are
+> accounted for.
+>
+> There's obviously more to it than this, but if you're smart enough
+> you'll figure it out. Head over to the projectPiki Discord server
+> if you need help.
+
+> **Other Note**  
+> After cloning this repo and making your fork, you should do the
+> following in order to be able to merge in changes from the parent
+> pikmin 2 decomp repo as it progresses and in case any changes
+> from it are not yet present in my repo:
+`git remote add template https://github.com/projectPiki/pikmin2.git`.
+> After this, just do `git fetch --all` and then you'll be able to
+> merge changes from the base repo into yours with
+`git merge template/main`
+> (granted you may encounter merge conflicts)
 
 ## Building
 
 ### Required Tools
 * [devkitPro](https://devkitpro.org/wiki/Getting_Started)
-* python 
+* python
 
 ### Instructions
 
 * WINDOWS ONLY STEP:
-	- Launch msys2 (provided by devkitPro) and run the following command: 
-	
-	```
-	pacman -S msys2-keyring
-	```
+	- Launch msys2 (provided by devkitPro) and run the following command:
+
+  ```
+  pacman -S msys2-keyring
+  ```
 
 1. Clone the repo using `git clone https://github.com/projectPiki/pikmin2/`
 
@@ -48,7 +66,7 @@ This repository builds the following DOLs:
 	- The project uses clang-format for a consistent style. Download the [correct version](https://cdn.discordapp.com/attachments/933849922418126918/1031358615300345856/clang-format.exe) and place in the main repo directory (e.g. `pikmin2/clang-format.exe`).
 
 * See [this video](https://youtu.be/CZXNQagqpkw) for a walkthrough of the steps on Windows (thanks Altafen for making this!).
-	
+
 ### Decompilation workflow
 
 - The project is compatible with [objdiff](https://github.com/encounter/objdiff), which is highly recommended for local decompilation testing. Objdiff can be built from source, or the latest stable build obtained from GitHub actions (recommended).
@@ -67,7 +85,7 @@ This repository builds the following DOLs:
 		- Select target build dir: `/path/to/cloned/pikmin2/build/pikmin2.usa/asm`
 		- Select base build dir: `/path/to/cloned/pikmin2/build/pikmin2.usa/src`
 			- NB: you may have to specify a custom make path if the desired `make` version is not the default. On Windows, this is likely:
-			`/path/to/devkitPro/msys2/usr/bin/make.exe`
+			  `/path/to/devkitPro/msys2/usr/bin/make.exe`
 	3. Select desired object file to diff (likely from `pikmin2/build/pikmin2.usa/asm/LIBRARY/OBJECTFILE.o`).
 	4. Decomp it!
 
@@ -79,5 +97,5 @@ This repository builds the following DOLs:
 - A recursive context processing script is included in the repo (<a href="https://github.com/projectPiki/pikmin2/tree/main/tools/decompctx.py">tools/decompctx.py</a>), which generates a `ctx.c` file in the root directory.
 	- The contents of this can then be copied and pasted into the 'Context' section of a decomp.me scratch or similar.
 - To use, call the generator via the terminal/command line from the root directory (replacing DIRECTORY and FILE as required):
-    ```python3 tools/decompctx.py src/DIRECTORY/FILE.cpp```
+  ```python3 tools/decompctx.py src/DIRECTORY/FILE.cpp```
 - Credit to encounter and the [Metroid Prime decomp project](https://github.com/PrimeDecomp/prime) for the script!
