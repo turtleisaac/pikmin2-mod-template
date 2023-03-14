@@ -5,6 +5,8 @@ ifneq ($(findstring MSYS,$(shell uname)),)
   WINDOWS := 1
 endif
 
+SYSTEM = $(shell grep -i -q 'microsoft' /proc/version; echo $$?)  # wsl check
+
 # If 0, tells the console to chill out. (Quiets the make process.)
 VERBOSE ?= 0
 
@@ -73,7 +75,7 @@ endif
 
 include obj_files.mk
 
-O_FILES :=	$(JSYSTEM) $(DOLPHIN) $(PLUGPROJECT) $(SYS) $(UTILITY)
+O_FILES :=	$(JSYSTEM) $(DOLPHIN) $(PLUGPROJECT) $(MODDING) $(SYS) $(UTILITY)
 ifeq ($(EPILOGUE_PROCESS),1)
 E_FILES :=	$(AR_UNSCHEDULED) $(CARD_UNSCHEDULED) $(DSP_UNSCHEDULED) $(DVD_UNSCHEDULED) $(OS_UNSCHEDULED) $(PAD_UNSCHEDULED) $(SI_UNSCHEDULED) $(GBA_UNSCHEDULED)
 endif
@@ -114,6 +116,11 @@ else
   CPP     := $(DEVKITPPC)/bin/powerpc-eabi-cpp -P
   PYTHON  := python3
 endif
+
+ifeq ($(SYSTEM), 0) # if this is wsl, then don't use wine
+	WINE ?=
+endif
+
 COMPILERS ?= tools/mwcc_compiler
 CC      = $(WINE) $(COMPILERS)/$(MWCC_VERSION)/mwcceppc.exe
 ifeq ($(EPILOGUE_PROCESS),1)
