@@ -81,7 +81,7 @@ EnemyMgrBase * createDisasterEnemyMgr(u8 type, int enemyID, int limit)
 {
 	// int limit = objLimit;
 	EnemyInfoFunc::getEnemyInfo(enemyID, 0xFFFF);
-	char* name = GeneralEnemyMgr::getEnemyName(enemyID, 0xFFFF);
+	char* name = EnemyInfoFunc::getEnemyName(enemyID, 0xFFFF)
 	sys->heapStatusStart(name, nullptr);
 
 	EnemyMgrBase* mgr;
@@ -374,7 +374,7 @@ EnemyMgrBase * createDisasterEnemyMgr(u8 type, int enemyID, int limit)
 
 	mgr->alloc();
 //	mEnemyMgrNode.add(new EnemyMgrNode(enemyID, name, mgr));
-	add(mgr);
+//	add(mgr);
 	sys->heapStatusEnd(name);
 	return mgr;
 }
