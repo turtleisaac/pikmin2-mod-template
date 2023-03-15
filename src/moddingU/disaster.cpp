@@ -103,7 +103,7 @@ void disasterGeneral() {
 	if (counter >= DISASTER_SPAWN_INTERVAL) {
 		OSReport("we are TRYING to fire the damn gun\n");
 
-		spawnEntity(type++);
+		spawnEntity((EnemyTypeID::EnemyID_Kochappy) type++);
 		counter = 0;
 	}
 	else {
