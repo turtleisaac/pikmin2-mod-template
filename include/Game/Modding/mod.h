@@ -10,6 +10,7 @@ namespace Game {
 
     EnemyMgrBase *  createDisasterEnemyMgr(u8 type, int enemyID, int limit);
     EnemyBase* disasterEnemyBirth(int enemyID, EnemyBirthArg& birthArg);
+    void allocateDisasterEnemies();
 }
 
 

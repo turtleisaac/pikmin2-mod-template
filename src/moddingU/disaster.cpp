@@ -19,6 +19,12 @@
 
 namespace Game {
 
+void allocateDisasterEnemies()
+{
+	generalEnemyMgr->addEnemyNum(EnemyID_Kochappy, 8, nullptr);
+	generalEnemyMgr->addEnemyNum(EnemyID_ShijimiChou, 8, nullptr);
+}
+
 EnemyBase* birth(int idx, Vector3f& position, bool check)
 {
 	EnemyBirthArg birthArg;
@@ -28,7 +34,6 @@ EnemyBase* birth(int idx, Vector3f& position, bool check)
 		birthArg.mExistenceLength = 50.0f;
 	}
 	OSReport("attempting spawn\n");
-	generalEnemyMgr->addEnemyNum(idx, 8, nullptr);
 	EnemyBase* teki = generalEnemyMgr->birth(idx, birthArg);
 	if (teki) {
 		OSReport("\tspawn possible success?\n");
@@ -104,6 +109,7 @@ void disasterGeneral() {
 	if (counter >= DISASTER_SPAWN_INTERVAL) {
 		OSReport("we are TRYING to fire the damn gun\n");
 		spawnEntity(EnemyTypeID::EnemyID_Kochappy);
+		spawnEntity(EnemyTypeID::EnemyID_ShijimiChou);
 		counter = 0;
 	}
 	else {

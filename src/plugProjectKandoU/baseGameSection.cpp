@@ -74,6 +74,8 @@
 #include "TexCaster.h"
 #include "Game/pathfinder.h"
 
+#include "Game/Modding/mod.h"
+
 /*
     Generated from dpostproc
 
@@ -1624,6 +1626,7 @@ void BaseGameSection::initResources()
 {
 	setupFixMemory();
 	setupFloatMemory();
+	allocateDisasterEnemies();
 }
 
 Vector2f getRectSkew() { return Vector2f(0.0f, -80.0f); }
