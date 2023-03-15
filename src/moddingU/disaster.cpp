@@ -53,7 +53,7 @@ Vector3f determineSpawnLocation(EnemyTypeID::EEnemyTypeID type)
 		radiusVariance = 0.0f;
 		enemyHeight    = 1.0f;
 
-		Navi* olimar = naviMgr->getAt(0);
+		Navi* olimar = naviMgr->getAt(1); //currently louie
 		if (olimar) {
 			spawnPos = olimar->getPosition();
 
@@ -108,8 +108,8 @@ long counter = 0;
 void disasterGeneral() {
 	if (counter >= DISASTER_SPAWN_INTERVAL) {
 		OSReport("we are TRYING to fire the damn gun\n");
-		spawnEntity(EnemyTypeID::EnemyID_Kochappy);
-		spawnEntity(EnemyTypeID::EnemyID_ShijimiChou);
+//		spawnEntity(EnemyTypeID::EnemyID_Kochappy);
+		spawnEntity(EnemyTypeID::EnemyID_Rock);
 		counter = 0;
 	}
 	else {
