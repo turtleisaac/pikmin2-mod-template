@@ -37,8 +37,10 @@ EnemyBase* birth(int idx, Vector3f& position, bool check)
 Vector3f determineSpawnLocation(EnemyTypeID::EEnemyTypeID type)
 {
 	Vector3f spawnPos;
-	if (Dolphin::rand() % 2) //if spawn at user
+	if (rand() % 2) //if spawn at user
 	{
+		float radiusVariance = 90.0f;
+		float enemyHeight    = 0.0f;
 		Navi* olimar = naviMgr->getAt(0);
 		if (olimar) {
 			spawnPos = olimar->getPosition();
@@ -56,7 +58,7 @@ Vector3f determineSpawnLocation(EnemyTypeID::EEnemyTypeID type)
 	}
 	else //if spawn at base
 	{
-//		int onionId = Dolphin::rand() % ONYON_TYPE_MAX;
+		//		int onionId = Dolphin::rand() % ONYON_TYPE_MAX;
 		int onionId = ONYON_TYPE_RED;
 		Onyon* onyon = ItemOnyon::mgr->getOnyon(onionId);
 		if (onyon) {
@@ -90,7 +92,7 @@ long counter = 0;
 
 void disasterGeneral() {
 	if (counter >= DISASTER_SPAWN_INTERVAL) {
-		EnemyTypeID::EEnemyTypeID type = EnemyID_Kochappy;
+		EnemyTypeID::EEnemyTypeID type = EnemyTypeID::EnemyID_Kochappy;
 		spawnEntity(type);
 		counter = 0;
 	}
