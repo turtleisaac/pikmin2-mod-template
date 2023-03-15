@@ -27,14 +27,16 @@ EnemyBase* birth(int idx, Vector3f& position, bool check)
 	if (check) {
 		birthArg.mExistenceLength = 50.0f;
 	}
+	OSReport("attempting spawn\n");
 	EnemyBase* teki = generalEnemyMgr->birth(idx, birthArg);
 	if (teki) {
+		OSReport("\tspawn possible success?\n");
 		teki->init(nullptr);
 	}
 	return teki;
 }
 
-Vector3f determineSpawnLocation(int type)
+Vector3f determineSpawnLocation(EnemyTypeID::EEnemyTypeID type)
 {
 	Vector3f spawnPos;
 //	if (rand() % 2) //if spawn at user
@@ -83,7 +85,7 @@ Vector3f determineSpawnLocation(int type)
 	return spawnPos;
 }
 
-void spawnEntity(int type)
+void spawnEntity(EnemyTypeID::EEnemyTypeID type)
 {
 	//see enemyInfo.h
 	Vector3f spawnLocation = determineSpawnLocation(type);
@@ -97,13 +99,10 @@ void spawnEntity(int type)
 #define DISASTER_SPAWN_INTERVAL 300
 long counter = 0;
 
-int type = EnemyTypeID::EnemyID_Kochappy;
-
 void disasterGeneral() {
 	if (counter >= DISASTER_SPAWN_INTERVAL) {
 		OSReport("we are TRYING to fire the damn gun\n");
-
-		spawnEntity(type++);
+		spawnEntity(EnemyTypeID::EnemyID_Kochappy);
 		counter = 0;
 	}
 	else {
