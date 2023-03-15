@@ -104,9 +104,9 @@ ifeq ($(WINDOWS),1)
 else
   WIBO   := $(shell command -v wibo 2> /dev/null)
   ifdef WIBO
-    WINE ?= wibo
+    WINE ?= #wibo
   else
-    WINE ?= wine
+    WINE ?= # wine
   endif
   # Disable wine debug output for cleanliness
   export WINEDEBUG ?= -all
