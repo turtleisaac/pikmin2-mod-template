@@ -28,7 +28,8 @@ EnemyBase* birth(int idx, Vector3f& position, bool check)
 		birthArg.mExistenceLength = 50.0f;
 	}
 	OSReport("attempting spawn\n");
-	EnemyBase* teki = disasterEnemyBirth(idx, birthArg);
+	generalEnemyMgr->addEnemyNum(idx, 8, nullptr);
+	EnemyBase* teki = generalEnemyMgr->birth(idx, birthArg);
 	if (teki) {
 		OSReport("\tspawn possible success?\n");
 		teki->init(nullptr);
