@@ -37,10 +37,14 @@ EnemyBase* birth(int idx, Vector3f& position, bool check)
 Vector3f determineSpawnLocation(EnemyTypeID::EEnemyTypeID type)
 {
 	Vector3f spawnPos;
-	if (rand() % 2) //if spawn at user
-	{
+//	if (rand() % 2) //if spawn at user
+//	{
 		float radiusVariance = 90.0f;
 		float enemyHeight    = 0.0f;
+
+		radiusVariance = 0.0f;
+		enemyHeight    = 1.0f;
+
 		Navi* olimar = naviMgr->getAt(0);
 		if (olimar) {
 			spawnPos = olimar->getPosition();
@@ -55,26 +59,26 @@ Vector3f determineSpawnLocation(EnemyTypeID::EEnemyTypeID type)
 
 			spawnPos += spawnOffset;
 		}
-	}
-	else //if spawn at base
-	{
-		//		int onionId = Dolphin::rand() % ONYON_TYPE_MAX;
-		int onionId = ONYON_TYPE_RED;
-		Onyon* onyon = ItemOnyon::mgr->getOnyon(onionId);
-		if (onyon) {
-			spawnPos = onyon->getPosition();
-
-			float faceDir = onyon->getFaceDir();
-
-			float radius = randFloat() * 150.0f + 50.0f;
-			float angle  = randFloat() * TAU;
-			float height = 0.0f;
-
-			Vector3f spawnOffset = Vector3f(radius * pikmin2_sinf(angle), height, radius * pikmin2_cosf(angle));
-
-			spawnPos += spawnOffset;
-		}
-	}
+//	}
+//	else //if spawn at base
+//	{
+//		//		int onionId = Dolphin::rand() % ONYON_TYPE_MAX;
+//		int onionId = ONYON_TYPE_RED;
+//		Onyon* onyon = ItemOnyon::mgr->getOnyon(onionId);
+//		if (onyon) {
+//			spawnPos = onyon->getPosition();
+//
+//			float faceDir = onyon->getFaceDir();
+//
+//			float radius = randFloat() * 150.0f + 50.0f;
+//			float angle  = randFloat() * TAU;
+//			float height = 0.0f;
+//
+//			Vector3f spawnOffset = Vector3f(radius * pikmin2_sinf(angle), height, radius * pikmin2_cosf(angle));
+//
+//			spawnPos += spawnOffset;
+//		}
+//	}
 
 	return spawnPos;
 }
@@ -83,7 +87,10 @@ void spawnEntity(EnemyTypeID::EEnemyTypeID type)
 {
 	//see enemyInfo.h
 	Vector3f spawnLocation = determineSpawnLocation(type);
-	birth(type, spawnLocation, false);
+	if (birth(type, spawnLocation, false))
+	{
+		PSSystem::spSysIF->playSystemSe(PSSE_SY_2PSLOT_GO, 0);
+	}
 }
 
 
@@ -92,8 +99,8 @@ long counter = 0;
 
 void disasterGeneral() {
 	if (counter >= DISASTER_SPAWN_INTERVAL) {
-		EnemyTypeID::EEnemyTypeID type = EnemyTypeID::EnemyID_Kochappy;
-		spawnEntity(type);
+		OSReport("we are TRYING to fire the damn gun\n");
+		spawnEntity(EnemyTypeID::EnemyID_Kochappy);
 		counter = 0;
 	}
 	else {
