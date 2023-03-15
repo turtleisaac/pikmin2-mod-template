@@ -7,13 +7,14 @@
 #include "JSystem/JKernel/JKRArchive.h"
 #include "PSSystem/PSSystemIF.h"
 #include "Game/Entities/ItemOnyon.h"
-#include "enemyInfo.h"
+#include "Game/enemyInfo.h"
 #include "Game/Stickers.h"
 #include "Game/pelletMgr.h"
 #include "Game/GameConfig.h"
 #include "nans.h"
 #include "trig.h"
-#include "Modding/mod.h"
+#include "Game/Modding/mod.h"
+#include "Game/EnemyMgrBase.h"
 
 namespace Game {
 

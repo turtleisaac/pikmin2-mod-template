@@ -11,7 +11,7 @@
 #include "Game/pelletMgr.h"
 #include "Game/GameConfig.h"
 #include "nans.h"
-#include "Modding/mod.h"
+#include "Game/Modding/mod.h"
 
 struct PlayCamera;
 

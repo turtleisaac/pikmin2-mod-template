@@ -1,5 +1,4 @@
 MODDING_FILES:=\
-# Insert path to new file output .o's like so, replacing Example with the name of your file:
 	$(BUILD_DIR)/src/moddingU/cameraHook.o\
 	$(BUILD_DIR)/src/moddingU/disaster.o\
 
