@@ -2,6 +2,8 @@
 #define PIKMIN2_DISASTER_MODE_MOD_H
 
 #include "types.h"
+#include "Game/EnemyMgrBase.h"
+#include "Game/generalEnemyMgr.h"
 
 namespace Game {
 	void disasterGeneral();
