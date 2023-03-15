@@ -1,0 +1,102 @@
+#include "types.h"
+#include "Dolphin/rand.h"
+#include "Game/VsGame.h"
+#include "efx2d/Arg.h"
+#include "efx2d/T2DSprayset.h"
+#include "Light.h"
+#include "JSystem/JKernel/JKRArchive.h"
+#include "PSSystem/PSSystemIF.h"
+#include "Game/Entities/ItemOnyon.h"
+#include "enemyInfo.h"
+#include "Game/Stickers.h"
+#include "Game/pelletMgr.h"
+#include "Game/GameConfig.h"
+#include "nans.h"
+#include "trig.h"
+#include "Modding/mod.h"
+
+namespace Game {
+
+EnemyBase* birth(int idx, Vector3f& position, bool check)
+{
+	EnemyBirthArg birthArg;
+	birthArg.mFaceDir  = TAU * randFloat();
+	birthArg.mPosition = position;
+	if (check) {
+		birthArg.mExistenceLength = 50.0f;
+	}
+	EnemyBase* teki = generalEnemyMgr->birth(idx, birthArg);
+	if (teki) {
+		teki->init(nullptr);
+	}
+	return teki;
+}
+
+Vector3f determineSpawnLocation(EnemyTypeID::EEnemyTypeID type)
+{
+	Vector3f spawnPos;
+	if (Dolphin::rand() % 2) //if spawn at user
+	{
+		Navi* olimar = naviMgr->getAt(0);
+		if (olimar) {
+			spawnPos = olimar->getPosition();
+
+			float faceDir = olimar->getFaceDir();
+			float radius  = randFloat() * 150.0f * radiusVariance;
+
+			float angle  = randFloat() * TAU;
+			float height = enemyHeight;
+
+			Vector3f spawnOffset = Vector3f(radius * pikmin2_sinf(angle), height, radius * pikmin2_cosf(angle));
+
+			spawnPos += spawnOffset;
+		}
+	}
+	else //if spawn at base
+	{
+//		int onionId = Dolphin::rand() % ONYON_TYPE_MAX;
+		int onionId = ONYON_TYPE_RED;
+		Onyon* onyon = ItemOnyon::mgr->getOnyon(onionId);
+		if (onyon) {
+			spawnPos = onyon->getPosition();
+
+			float faceDir = onyon->getFaceDir();
+
+			float radius = randFloat() * 150.0f + 50.0f;
+			float angle  = randFloat() * TAU;
+			float height = 0.0f;
+
+			Vector3f spawnOffset = Vector3f(radius * pikmin2_sinf(angle), height, radius * pikmin2_cosf(angle));
+
+			spawnPos += spawnOffset;
+		}
+	}
+
+	return spawnPos;
+}
+
+void spawnEntity(EnemyTypeID::EEnemyTypeID type)
+{
+	//see enemyInfo.h
+	Vector3f spawnLocation = determineSpawnLocation(type);
+	birth(type, spawnLocation, false);
+}
+
+
+#define DISASTER_SPAWN_INTERVAL 1000
+long counter = 0;
+
+void disasterGeneral() {
+	if (counter >= DISASTER_SPAWN_INTERVAL) {
+		EnemyTypeID::EEnemyTypeID type = EnemyID_Kochappy;
+		spawnEntity(type);
+		counter = 0;
+	}
+	else {
+		counter++;
+	}
+}
+
+} // namespace Game
+
+
