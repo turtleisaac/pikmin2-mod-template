@@ -94,13 +94,16 @@ void spawnEntity(EnemyTypeID::EEnemyTypeID type)
 }
 
 
-#define DISASTER_SPAWN_INTERVAL 1000
+#define DISASTER_SPAWN_INTERVAL 300
 long counter = 0;
+
+int type = EnemyTypeID::EnemyID_Kochappy;
 
 void disasterGeneral() {
 	if (counter >= DISASTER_SPAWN_INTERVAL) {
 		OSReport("we are TRYING to fire the damn gun\n");
-		spawnEntity(EnemyTypeID::EnemyID_Kochappy);
+
+		spawnEntity(type++);
 		counter = 0;
 	}
 	else {
