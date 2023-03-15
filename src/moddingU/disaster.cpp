@@ -15,6 +15,7 @@
 #include "trig.h"
 #include "Game/Modding/mod.h"
 #include "Game/EnemyMgrBase.h"
+#include "Game/generalEnemyMgr.h"
 
 namespace Game {
 
