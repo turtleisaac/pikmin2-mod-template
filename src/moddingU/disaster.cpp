@@ -21,8 +21,8 @@ namespace Game {
 
 void allocateDisasterEnemies()
 {
-	generalEnemyMgr->addEnemyNum(EnemyID_Kochappy, 8, nullptr);
-	generalEnemyMgr->addEnemyNum(EnemyID_ShijimiChou, 8, nullptr);
+	generalEnemyMgr->addEnemyNum(EnemyTypeID::EnemyID_Kochappy, 8, nullptr);
+	generalEnemyMgr->addEnemyNum(EnemyTypeID::EnemyID_ShijimiChou, 8, nullptr);
 }
 
 EnemyBase* birth(int idx, Vector3f& position, bool check)
