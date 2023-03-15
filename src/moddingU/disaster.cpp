@@ -34,7 +34,7 @@ EnemyBase* birth(int idx, Vector3f& position, bool check)
 	return teki;
 }
 
-Vector3f determineSpawnLocation(EnemyTypeID::EEnemyTypeID type)
+Vector3f determineSpawnLocation(int type)
 {
 	Vector3f spawnPos;
 //	if (rand() % 2) //if spawn at user
@@ -83,7 +83,7 @@ Vector3f determineSpawnLocation(EnemyTypeID::EEnemyTypeID type)
 	return spawnPos;
 }
 
-void spawnEntity(EnemyTypeID::EEnemyTypeID type)
+void spawnEntity(int type)
 {
 	//see enemyInfo.h
 	Vector3f spawnLocation = determineSpawnLocation(type);
@@ -103,7 +103,7 @@ void disasterGeneral() {
 	if (counter >= DISASTER_SPAWN_INTERVAL) {
 		OSReport("we are TRYING to fire the damn gun\n");
 
-		spawnEntity((EnemyTypeID::EnemyID_Kochappy) type++);
+		spawnEntity(type++);
 		counter = 0;
 	}
 	else {
