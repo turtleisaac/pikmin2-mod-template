@@ -1,6 +1,7 @@
 MODDING_FILES:=\
 	$(BUILD_DIR)/src/moddingU/cameraHook.o\
 	$(BUILD_DIR)/src/moddingU/disaster.o\
+	$(BUILD_DIR)/src/moddingU/disasterEnemyMgr.o\
 
 DEPENDS += $(MODDING_FILES:.o=.d)
 
