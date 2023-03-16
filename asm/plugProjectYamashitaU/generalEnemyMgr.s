@@ -55,7 +55,6 @@
 .section .data, "wa"  # 0x8049E220 - 0x804EFC20
 .balign 8
 .obj lbl_804AB390, local
-	.4byte .L_8010C9BC
 .endobj lbl_804AB390
 .obj __vt__Q24Game15GeneralEnemyMgr, global
 	.4byte 0
