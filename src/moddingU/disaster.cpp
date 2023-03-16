@@ -118,7 +118,7 @@ void spawnEntity(EnemyTypeID::EEnemyTypeID type)
 }
 
 
-#define DISASTER_SPAWN_INTERVAL 500
+#define DISASTER_SPAWN_INTERVAL 200
 long counter = 0;
 
 EnemyTypeID::EEnemyTypeID spawnable[63] = {
