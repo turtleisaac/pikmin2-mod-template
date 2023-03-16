@@ -108,8 +108,8 @@ long counter = 0;
 void disasterGeneral() {
 	if (counter >= DISASTER_SPAWN_INTERVAL) {
 		OSReport("we are TRYING to fire the damn gun\n");
-//		spawnEntity(EnemyTypeID::EnemyID_Kochappy);
-		spawnEntity(EnemyTypeID::EnemyID_Rock);
+		spawnEntity(EnemyTypeID::EnemyID_Kochappy);
+//		spawnEntity(EnemyTypeID::EnemyID_Rock);
 		counter = 0;
 	}
 	else {
