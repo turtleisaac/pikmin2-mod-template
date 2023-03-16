@@ -118,7 +118,7 @@ void spawnEntity(EnemyTypeID::EEnemyTypeID type)
 }
 
 
-#define DISASTER_SPAWN_INTERVAL 300
+#define DISASTER_SPAWN_INTERVAL 500
 long counter = 0;
 
 EnemyTypeID::EEnemyTypeID spawnable[63] = {
@@ -200,7 +200,7 @@ void disasterGeneral() {
 				num = 2;
 				break;
 			case EnemyTypeID::EnemyID_TamagoMushi:
-				num = 8;
+				num = 4;
 				break;
 			default:
 				num = 1;
@@ -210,6 +210,8 @@ void disasterGeneral() {
 		{
 			spawnEntity(enemyType);
 		}
+
+		counter = 0;
 	}
 	else {
 		counter++;
