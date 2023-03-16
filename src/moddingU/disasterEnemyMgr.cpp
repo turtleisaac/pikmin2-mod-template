@@ -77,234 +77,234 @@
 
 namespace Game {
 
-EnemyMgrBase * createDisasterEnemyMgr(u8 type, int enemyID, int limit)
+void GeneralEnemyMgr::createEnemyMgr(u8 type, int enemyID, int limit)
 {
 	// int limit = objLimit;
 	EnemyInfoFunc::getEnemyInfo(enemyID, 0xFFFF);
-	char* name = EnemyInfoFunc::getEnemyName(enemyID, 0xFFFF);
+	char* name = getEnemyName(enemyID, 0xFFFF);
 	sys->heapStatusStart(name, nullptr);
 
 	EnemyMgrBase* mgr;
 
 	switch (enemyID) {
 	case EnemyTypeID::EnemyID_Pelplant:
-		mgr = new Pelplant::Mgr(limit, type);
+		mgr = new Pelplant::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Kochappy:
-		mgr = new Kochappy::Mgr(limit, type);
+		mgr = new Kochappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_BlueKochappy:
-		mgr = new BlueKochappy::Mgr(limit, type);
+		mgr = new BlueKochappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_YellowKochappy:
-		mgr = new YellowKochappy::Mgr(limit, type);
+		mgr = new YellowKochappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Chappy:
-		mgr = new Chappy::Mgr(limit, type);
+		mgr = new Chappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_BlueChappy:
-		mgr = new BlueChappy::Mgr(limit, type);
+		mgr = new BlueChappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_YellowChappy:
-		mgr = new YellowChappy::Mgr(limit, type);
+		mgr = new YellowChappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Pom:
-		mgr = new Pom::Mgr(limit, type);
+		mgr = new Pom::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Frog:
-		mgr = new Frog::Mgr(limit, type);
+		mgr = new Frog::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Kogane:
-		mgr = new Koganemushi::Mgr(limit, type);
+		mgr = new Koganemushi::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Wealthy:
-		mgr = new Wealthy::Mgr(limit, type);
+		mgr = new Wealthy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Fart:
-		mgr = new Fart::Mgr(limit, type);
+		mgr = new Fart::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Qurione:
-		mgr = new Qurione::Mgr(limit, type);
+		mgr = new Qurione::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_MaroFrog:
-		mgr = new MaroFrog::Mgr(limit, type);
+		mgr = new MaroFrog::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Rock:
-		mgr = new Rock::Mgr(limit, type);
+		mgr = new Rock::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_UjiA:
-		mgr = new Ujia::Mgr(limit, type);
+		mgr = new Ujia::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_UjiB:
-		mgr = new Ujib::Mgr(limit, type);
+		mgr = new Ujib::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Tobi:
-		mgr = new Tobi::Mgr(limit, type);
+		mgr = new Tobi::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Armor:
-		mgr = new Armor::Mgr(limit, type);
+		mgr = new Armor::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Hiba:
-		mgr = new Hiba::Mgr(limit, type);
+		mgr = new Hiba::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_GasHiba:
-		mgr = new GasHiba::Mgr(limit, type);
+		mgr = new GasHiba::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_ElecHiba:
-		mgr = new ElecHiba::Mgr(limit, type);
+		mgr = new ElecHiba::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Sarai:
-		mgr = new Sarai::Mgr(limit, type);
+		mgr = new Sarai::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Tank:
-		mgr = new Ftank::Mgr(limit, type);
+		mgr = new Ftank::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Wtank:
-		mgr = new Wtank::Mgr(limit, type);
+		mgr = new Wtank::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Catfish:
-		mgr = new Catfish::Mgr(limit, type);
+		mgr = new Catfish::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Tadpole:
-		mgr = new Tadpole::Mgr(limit, type);
+		mgr = new Tadpole::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_ElecBug:
-		mgr = new ElecBug::Mgr(limit, type);
+		mgr = new ElecBug::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Mar:
-		mgr = new Mar::Mgr(limit, type);
+		mgr = new Mar::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Queen:
-		mgr = new Queen::Mgr(limit, type);
+		mgr = new Queen::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Baby:
-		mgr = new Baby::Mgr(limit, type);
+		mgr = new Baby::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Demon:
-		mgr = new Demon::Mgr(limit, type);
+		mgr = new Demon::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_FireChappy:
-		mgr = new FireChappy::Mgr(limit, type);
+		mgr = new FireChappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_SnakeCrow:
-		mgr = new SnakeCrow::Mgr(limit, type);
+		mgr = new SnakeCrow::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_KumaChappy:
-		mgr = new KumaChappy::Mgr(limit, type);
+		mgr = new KumaChappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Bomb:
-		mgr = new Bomb::Mgr(limit, type);
+		mgr = new Bomb::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Egg:
-		mgr = new Egg::Mgr(limit, type);
+		mgr = new Egg::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_PanModoki:
-		mgr = new PanModoki::Mgr(limit, type);
+		mgr = new PanModoki::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_OoPanModoki:
-		mgr = new OoPanModoki::Mgr(limit, type);
+		mgr = new OoPanModoki::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_PanHouse:
-		mgr = new Nest::Mgr(limit, type);
+		mgr = new Nest::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Fuefuki:
-		mgr = new Fuefuki::Mgr(limit, type);
+		mgr = new Fuefuki::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Tanpopo:
-		mgr = new Tanpopo::Mgr(limit, type);
+		mgr = new Tanpopo::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Clover:
-		mgr = new Clover::Mgr(limit, type);
+		mgr = new Clover::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_HikariKinoko:
-		mgr = new HikariKinoko::Mgr(limit, type);
+		mgr = new HikariKinoko::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Ooinu_s:
-		mgr = new Ooinu_s::Mgr(limit, type);
+		mgr = new Ooinu_s::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_KareOoinu_s:
-		mgr = new KareOoinu_s::Mgr(limit, type);
+		mgr = new KareOoinu_s::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Ooinu_l:
-		mgr = new Ooinu_l::Mgr(limit, type);
+		mgr = new Ooinu_l::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_KareOoinu_l:
-		mgr = new KareOoinu_l::Mgr(limit, type);
+		mgr = new KareOoinu_l::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Wakame_s:
-		mgr = new Wakame_s::Mgr(limit, type);
+		mgr = new Wakame_s::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Wakame_l:
-		mgr = new Wakame_l::Mgr(limit, type);
+		mgr = new Wakame_l::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Tukushi:
-		mgr = new Tukushi::Mgr(limit, type);
+		mgr = new Tukushi::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Watage:
-		mgr = new Watage::Mgr(limit, type);
+		mgr = new Watage::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_DaiodoRed:
-		mgr = new DiodeRed::Mgr(limit, type);
+		mgr = new DiodeRed::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_DaiodoGreen:
-		mgr = new DiodeGreen::Mgr(limit, type);
+		mgr = new DiodeGreen::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Magaret:
-		mgr = new Margaret::Mgr(limit, type);
+		mgr = new Margaret::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Nekojarashi:
-		mgr = new Nekojarashi::Mgr(limit, type);
+		mgr = new Nekojarashi::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Chiyogami:
-		mgr = new Chiyogami::Mgr(limit, type);
+		mgr = new Chiyogami::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Zenmai:
-		mgr = new Zenmai::Mgr(limit, type);
+		mgr = new Zenmai::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_KingChappy:
-		mgr = new KingChappy::Mgr(limit, type);
+		mgr = new KingChappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Miulin:
-		mgr = new Miulin::Mgr(limit, type);
+		mgr = new Miulin::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Hanachirashi:
-		mgr = new Hanachirashi::Mgr(limit, type);
+		mgr = new Hanachirashi::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Damagumo:
-		mgr = new Damagumo::Mgr(limit, type);
+		mgr = new Damagumo::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Kurage:
-		mgr = new Kurage::Mgr(limit, type);
+		mgr = new Kurage::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_BombSarai:
-		mgr = new BombSarai::Mgr(limit, type);
+		mgr = new BombSarai::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_FireOtakara:
-		mgr = new FireOtakara::Mgr(limit, type);
+		mgr = new FireOtakara::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_WaterOtakara:
-		mgr = new WaterOtakara::Mgr(limit, type);
+		mgr = new WaterOtakara::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_GasOtakara:
-		mgr = new GasOtakara::Mgr(limit, type);
+		mgr = new GasOtakara::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_ElecOtakara:
-		mgr = new ElecOtakara::Mgr(limit, type);
+		mgr = new ElecOtakara::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_BombOtakara:
-		mgr = new BombOtakara::Mgr(limit, type);
+		mgr = new BombOtakara::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Jigumo:
-		mgr = new Jigumo::Mgr(limit, type);
+		mgr = new Jigumo::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Imomushi:
-		mgr = new Imomushi::Mgr(limit, type);
+		mgr = new Imomushi::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Houdai:
-		mgr = new Houdai::Mgr(limit, type);
+		mgr = new Houdai::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_LeafChappy:
-		mgr = new LeafChappy::Mgr(limit, type);
+		mgr = new LeafChappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_TamagoMushi:
 		if ((gameSystem != nullptr) && (gameSystem->mIsInCave == 0)) {
@@ -315,31 +315,31 @@ EnemyMgrBase * createDisasterEnemyMgr(u8 type, int enemyID, int limit)
 		mgr = new TamagoMushi::Mgr(limit, type);
 		break;
 	case EnemyTypeID::EnemyID_BigFoot:
-		mgr = new BigFoot::Mgr(limit, type);
+		mgr = new BigFoot::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_SnakeWhole:
-		mgr = new SnakeWhole::Mgr(limit, type);
+		mgr = new SnakeWhole::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_UmiMushiBase:
-		mgr = new UmiMushi::Mgr(limit, type);
+		mgr = new UmiMushi::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_OniKurage:
-		mgr = new OniKurage::Mgr(limit, type);
+		mgr = new OniKurage::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_BigTreasure:
-		mgr = new BigTreasure::Mgr(limit, type);
+		mgr = new BigTreasure::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Kabuto:
-		mgr = new GreenKabuto::Mgr(limit, type);
+		mgr = new GreenKabuto::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Rkabuto:
-		mgr = new RedKabuto::Mgr(limit, type);
+		mgr = new RedKabuto::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Fkabuto:
-		mgr = new FixKabuto::Mgr(limit, type);
+		mgr = new FixKabuto::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_KumaKochappy:
-		mgr = new KumaKochappy::Mgr(limit, type);
+		mgr = new KumaKochappy::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_ShijimiChou:
 		if ((gameSystem != nullptr) && (gameSystem->mIsInCave == 0)) {
@@ -350,46 +350,45 @@ EnemyMgrBase * createDisasterEnemyMgr(u8 type, int enemyID, int limit)
 		mgr = new ShijimiChou::Mgr(limit, type);
 		break;
 	case EnemyTypeID::EnemyID_MiniHoudai:
-		mgr = new NormMiniHoudai::Mgr(limit, type);
+		mgr = new NormMiniHoudai::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_FminiHoudai:
-		mgr = new FixMiniHoudai::Mgr(limit, type);
+		mgr = new FixMiniHoudai::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Sokkuri:
-		mgr = new Sokkuri::Mgr(limit, type);
+		mgr = new Sokkuri::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Hana:
-		mgr = new Hana::Mgr(limit, type);
+		mgr = new Hana::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_BlackMan:
-		mgr = new BlackMan::Mgr(limit, type);
+		mgr = new BlackMan::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_Tyre:
-		mgr = new Tyre::Mgr(limit, type);
+		mgr = new Tyre::Mgr(limit + 5, type);
 		break;
 	case EnemyTypeID::EnemyID_DangoMushi:
-		mgr = new DangoMushi::Mgr(limit, type);
+		mgr = new DangoMushi::Mgr(limit + 5, type);
 		break;
 	}
 
 	mgr->alloc();
-//	mEnemyMgrNode.add(new EnemyMgrNode(enemyID, name, mgr));
-//	add(mgr);
+	mEnemyMgrNode.add(new EnemyMgrNode(enemyID, name, mgr));
+	add(mgr);
 	sys->heapStatusEnd(name);
-	return mgr;
 }
 
-EnemyBase * disasterEnemyBirth(int enemyID, EnemyBirthArg& birthArg)
-{
-	EnemyBase* enemy = nullptr;
-
-	IEnemyMgrBase* base = createDisasterEnemyMgr(2, enemyID, 1);
-	if (base) {
-		birthArg.mTypeID = (EnemyTypeID::EEnemyTypeID)enemyID;
-		enemy            = base->birth(birthArg);
-	}
-
-	return enemy;
-}
+//EnemyBase * disasterEnemyBirth(int enemyID, EnemyBirthArg& birthArg)
+//{
+//	EnemyBase* enemy = nullptr;
+//
+//	IEnemyMgrBase* base = createDisasterEnemyMgr(2, enemyID, 1);
+//	if (base) {
+//		birthArg.mTypeID = (EnemyTypeID::EEnemyTypeID)enemyID;
+//		enemy            = base->birth(birthArg);
+//	}
+//
+//	return enemy;
+//}
 
 } //namespace Game

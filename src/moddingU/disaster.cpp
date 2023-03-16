@@ -53,7 +53,7 @@ Vector3f determineSpawnLocation(EnemyTypeID::EEnemyTypeID type)
 		radiusVariance = 0.0f;
 		enemyHeight    = 1.0f;
 
-		Navi* olimar = naviMgr->getAt(1); //currently louie
+		Navi* olimar = naviMgr->getAt(0);
 		if (olimar) {
 			spawnPos = olimar->getPosition();
 
